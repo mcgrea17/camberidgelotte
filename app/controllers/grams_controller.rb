@@ -34,6 +34,13 @@ class GramsController < ApplicationController
         redirect_to root_path 
     end
 
+    def destroy
+        @gram = Gram.find_by_id(params[:id])
+        return render_not_found if !(@gram.present?)
+        @gram.destroy
+        redirect_to root_path 
+    end
+
     private
 
     def render_not_found
