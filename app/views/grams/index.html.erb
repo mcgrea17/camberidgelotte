@@ -1,8 +1,55 @@
-<h1>Grams!</h1>
+<div class="bod">
+  <br/>
+  <h1>My Pics and Thoughts!</h1>
 
-<% @grams.each do |gram| %>
-<div>
-  <%= gram.message %>
-  <%= image_tag( gram.picture.url, :class => "style_image") %>
+  <div class="grams booyah-box col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+
+    <% @grams.each do |gram| %>
+      <div class="booyah-box card">
+        <div class="handle"><%= gram.user.email %></div>
+          <div class="row">
+            <div id="imageHolder">
+                <%= image_tag gram.picture.url, class:  "img-fluid style_image" %>
+            </div>
+            <br/><div class="clear"></div>
+          </div>
+          <p>
+            <%= gram.message %>
+          </p>
+        
+      
+          <div class="gram-actions float-right">
+              <% if current_user && current_user == gram.user %>
+                <%= link_to 'Edit', edit_gram_path(gram), class: "btn btn-primary" %>
+                <%= link_to 'Delete', gram_path(gram), class: "btn btn-primary", method: :delete, data: {confirm: 'Are you sure?'} %>
+
+              <% end %>
+          </div>
+          <br class="clear-fix" />
+          <div class="comments">
+            <hr/>
+            <h3>Comments</h3>
+
+            <% gram.comments.each do |comment| %>
+              <div class="comment">
+                <span class="comment_handle">
+                  <%= comment.user.email %>
+                </span>
+                <%= comment.message %>
+              </div>
+            <% end %>
+            <hr/>
+            <h4>Add a comment</h4>
+
+            <%= simple_form_for :comment, :url => gram_comments_path(gram.id),  :method => :create do |f|   %>
+                <%= f.input :message, label: "" %>
+
+                <%= f.submit "Add Comment", class: "btn btn-primary" %>
+            <% end %> 
+          </div>
+        
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-<% end %>
