@@ -1,24 +1,7 @@
-# README
+# Grammable
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app will allow you to add photos and make comments on photos.  Once you are signed in as a user you will be able to add new photos and comment on all photos.
 
-Things you may want to cover:
+To view the app: https://camberidgelotte-amber-mcgregor.herokuapp.com/
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![grammable](https://user-images.githubusercontent.com/34463810/65835399-a7d36200-e29a-11e9-9d0b-65c13b0ab274.png)
